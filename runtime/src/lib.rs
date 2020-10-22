@@ -291,10 +291,10 @@ impl pallet_identity::Trait for Runtime {
     type MaxRegistrars = MaxRegistrars;
     // type Slashed = Treasury;
     type Slashed = (); // OnUnbalanced<NegativeImbalanceOf<Self>>; //https://substrate.dev/docs/en/tutorials/add-a-pallet/configure-a-pallet
-    // type ForceOrigin = MoreThanHalfCouncil;
-    type ForceOrigin = EnsureOrigin<Self::Origin>; //https://substrate.dev/docs/en/tutorials/add-a-pallet/configure-a-pallet
-    // type RegistrarOrigin = MoreThanHalfCouncil;
-    type RegistrarOrigin = EnsureOrigin<Self::Origin>;
+                       // type ForceOrigin = MoreThanHalfCouncil;
+    type ForceOrigin = frame_system::EnsureSigned<AccountId>; //https://substrate.dev/docs/en/tutorials/add-a-pallet/configure-a-pallet
+                                                              // type RegistrarOrigin = MoreThanHalfCouncil;
+    type RegistrarOrigin = frame_system::EnsureSigned<AccountId>;
     type WeightInfo = (); // might need to be something?
 }
 
